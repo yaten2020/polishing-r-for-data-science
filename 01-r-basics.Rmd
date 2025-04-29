@@ -1,0 +1,25 @@
+---
+title: "01 - R Basics"
+author: "yaten2020"
+date: "`r Sys.Date()`"
+output: html_document
+---
+
+## Getting Started with R
+
+Let's start by doing some basic math in R.
+
+```{r}
+# Basic arithmetic
+1 + 1
+2 * 5
+sqrt(16)
+```
+
+## Working with Vectors
+
+```{r}
+# Create a vector and calculate the mean
+x <- c(10, 20, 30, 40, 50)
+mean(x)
+```

@@ -1,0 +1,63 @@
+---
+title: "Exploring Tidyverse"
+output:
+  html_document:
+    df_print: paged
+---
+
+Testing how this notebook works!
+
+```{r}
+plot(cars)
+```
+
+**Tidyverse approach:**
+
+```{r}
+library(tidyverse)
+```
+
+Data is in "tidy format" when each row presents a single observation and each column is a variable
+
+**most useful functions in dplyr** 
+mutate() to add columns. 
+select() to select and order columns. 
+filter() to filter rows based on a boolean.
+
+Lets get some data to play with:
+
+```{r}
+library(dslabs)
+data("murders")
+colnames(murders)
+```
+
+Adding another variable with mutate()
+
+```{r}
+murders <- mutate(murders, rate = total / population * 100000)  # add a new column 
+```
+
+Filtering rows
+
+```{r}
+murders_filt<- filter(murders, rate <= 0.71) # subsetting rows with with filter
+colnames(murders_filt)
+```
+
+Subsetting columns with select
+
+```{r}
+new_table <- select(murders, state, region, rate) # you can change the order of the columns too. 
+head(new_table)
+```
+
+**using the pipe \|\> or %\>%**
+
+```{r}
+murders |> select(state, region, rate) |> filter(rate <= 0.71)
+# or just save the new df 
+murders2 <- murders |> select(state, region, rate) |> filter(rate <= 0.71)
+```
+
+note how df is piped to various functions in tandem.
